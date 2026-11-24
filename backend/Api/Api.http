@@ -1,0 +1,78 @@
+@Api_HostAddress = http://localhost:5205
+
+### Create a valid Exhibitor registration
+POST {{Api_HostAddress}}/api/registrations
+Content-Type: application/json
+
+{
+  "participantName": "Maria Santos",
+  "contactNumber": "09171234567",
+  "email": "maria.santos@example.com",
+  "address": "Sorsogon City, Sorsogon",
+  "carMakeModel": "Toyota GR86",
+  "plateNumber": "ABC-2027",
+  "registrationType": "Exhibitor",
+  "amountPaid": 750
+}
+
+### Create an invalid registration (validation test)
+POST {{Api_HostAddress}}/api/registrations
+Content-Type: application/json
+
+{
+  "participantName": "",
+  "contactNumber": "12345",
+  "email": "not-an-email",
+  "address": "",
+  "carMakeModel": "",
+  "plateNumber": "",
+  "registrationType": "Exhibitor",
+  "amountPaid": -100
+}
+
+### Create a duplicate plate registration (409 Conflict test)
+POST {{Api_HostAddress}}/api/registrations
+Content-Type: application/json
+
+{
+  "participantName": "Duplicate Plate Test",
+  "contactNumber": "09991234567",
+  "email": "duplicate@example.com",
+  "address": "Sorsogon City",
+  "carMakeModel": "Honda Civic",
+  "plateNumber": "ABC-2027",
+  "registrationType": "Competitor",
+  "amountPaid": 2500
+}
+
+### Get paged registrations
+GET {{Api_HostAddress}}/api/registrations?page=1&pageSize=10
+Accept: application/json
+
+### Get filtered registrations by type
+GET {{Api_HostAddress}}/api/registrations?type=Competitor&page=1&pageSize=10
+Accept: application/json
+
+### Get filtered registrations by status
+GET {{Api_HostAddress}}/api/registrations?status=Pending&page=1&pageSize=10
+Accept: application/json
+
+### Get filtered registrations by participant name
+GET {{Api_HostAddress}}/api/registrations?participantName=participant&page=1&pageSize=10
+Accept: application/json
+
+### Get combined filtered registrations
+GET {{Api_HostAddress}}/api/registrations?type=VIP&status=Confirmed&participantName=participant&page=1&pageSize=5
+Accept: application/json
+
+### Get registration by a known seed ID (replace with an ID returned by GET)
+GET {{Api_HostAddress}}/api/registrations/00000000-0000-0000-0000-000000000001
+Accept: application/json
+
+### Get registration by ID - 404 Not Found test
+GET {{Api_HostAddress}}/api/registrations/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa
+Accept: application/json
+
+### Get registration summary
+GET {{Api_HostAddress}}/api/registrations/summary
+Accept: application/json
