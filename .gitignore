@@ -1,0 +1,82 @@
+# .NET build outputs
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio / IDE
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.ncb
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.VC.opendb
+.idea/
+.vscode/
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+
+# ASP.NET / .NET runtime-generated files
+project.lock.json
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+
+# Frontend dependencies and build outputs
+node_modules/
+dist/
+dist-ssr/
+
+# Vite / JavaScript tool output
+*.local
+*.tsbuildinfo
+.vite/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# SQLite database and temporary files
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+*.sqlite-shm
+*.sqlite-wal
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# OS-generated files
+Thumbs.db
+Thumbs.db:encryptable
+Desktop.ini
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Temporary and cache files
+*.tmp
+*.temp
+*~
+~$
+*.cache
+.cache/
